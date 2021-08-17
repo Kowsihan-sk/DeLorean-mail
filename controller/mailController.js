@@ -7,7 +7,9 @@ export const createMail = async (req, res) => {
         const mail = await new Mail(req.body);
         mail.save();
 
-        res.status(200).json("mail added to database successfully");
+        // res.status(200).json("mail added to database successfully");
+        res.status(200).redirect("/");
+
     } catch (error) {
         res.status(500).json(error);
     }
@@ -16,7 +18,8 @@ export const createMail = async (req, res) => {
 export const sendMail = async (req, res) => {
     let today = new Date();
     let offset = today.getTimezoneOffset();
-    today = new Date(today.getTime() - offset * 60 * 1000).toISOString().split("T")[0];
+    today = new Date(today.getTime() - offset * 60 * 1000 + 9 * 60 * 60 * 1000 + 30 * 60 * 1000).toISOString().split("T")[0];
+    // console.log(today);
 
     try {
         const mails = await Mail.find({ deliverDate: today });
