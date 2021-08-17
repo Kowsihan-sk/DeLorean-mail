@@ -2,7 +2,7 @@ import Mail from "../models/mail.js";
 import { send_mail } from "../nodemailer.js";
 
 export const createMail = async (req, res) => {
-    console.log(req.body);
+    // console.log(req.body);
     try {
         const mail = await new Mail(req.body);
         mail.save();
