@@ -9,11 +9,13 @@ import router from "./routes/route.js";
 connectDB();
 const __dirname = path.resolve();
 const app = express();
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(express.static("public"));
 
 app.get("/", function (req, res) {
-    res.sendFile(__dirname + "/form.html");
+    res.sendFile(__dirname + "/index.html");
 });
 
 app.use("/", router);

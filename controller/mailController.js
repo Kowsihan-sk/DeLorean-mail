@@ -16,7 +16,7 @@ export const createMail = async (req, res) => {
 export const sendMail = async (req, res) => {
     let today = new Date();
     let offset = today.getTimezoneOffset();
-    today = new Date(today.getTime() - offset * 60 * 1000 + 48 * 60 * 60 * 1000).toISOString().split("T")[0];
+    today = new Date(today.getTime() - offset * 60 * 1000).toISOString().split("T")[0];
 
     try {
         const mails = await Mail.find({ deliverDate: today });
