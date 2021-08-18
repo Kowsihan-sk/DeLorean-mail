@@ -5,6 +5,7 @@ DeLorean-mail is a single page web app which allows you to send mails with the c
 - [DeLorean-Mail](#delorean-mail)
   - [Tech Used](#tech-used)
   - [Live Demo](#live-demo)
+  - [Screenshots](#screenshots)
   - [Run it locally](#run-it-locally)
 
 ## Tech Used
@@ -14,6 +15,12 @@ DeLorean-mail is a single page web app which allows you to send mails with the c
 ## Live Demo
 
 This site is hosted [here](https://delorean-mail.herokuapp.com/)
+
+## Screenshots
+
+![Screenshot (18)](https://user-images.githubusercontent.com/56033238/129856668-d1008444-d096-4159-b5d4-54cc8521acb6.png)
+![Screenshot (20)](https://user-images.githubusercontent.com/56033238/129856686-bdd69721-13c9-473d-b0e5-26c0963383ae.png)
+
 
 ## Run it locally
 
