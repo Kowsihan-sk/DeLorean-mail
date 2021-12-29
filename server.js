@@ -1,17 +1,18 @@
 import dotenv from "dotenv";
 dotenv.config();
 import path from "path"
-import express from "express";
+import express, { json, urlencoded } from "express";
 
 import connectDB from "./config/db.js";
 import router from "./routes/route.js";
 
 connectDB();
+
 const __dirname = path.resolve();
 const app = express();
 
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+app.use(json());
+app.use(urlencoded({ extended: true }));
 app.use(express.static("public"));
 
 app.get("/", function (req, res) {
