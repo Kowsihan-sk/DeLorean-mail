@@ -1,6 +1,6 @@
 import { scheduleJob } from "node-schedule";
 import Mail from "../models/mail.js";
-import { send_mail } from "../nodemailer.js";
+import { send_mail } from "../utils/sendMail.js";
 
 scheduleJob('0 0 * * *', async () => {
     try {
