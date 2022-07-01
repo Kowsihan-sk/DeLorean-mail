@@ -2,13 +2,14 @@ import { scheduleJob } from "node-schedule";
 import Mail from "../models/mail.js";
 import { send_mail } from "../utils/sendMail.js";
 
-scheduleJob('0 0 * * *', async () => {
+scheduleJob('0 */6 * * *', async () => {
     try {
         let today = new Date();
         let offset = today.getTimezoneOffset();
         today = new Date(today.getTime() - offset * 60 * 1000 + 9 * 60 * 60 * 1000 + 30 * 60 * 1000).toISOString().split("T")[0];
         // console.log(today);
-        let mails = await Mail.find({ deliverDate: today });
+
+        const mails = await Mail.find({ deliverDate: today });
 
         if (Array.isArray(mails)) {
             mails.map(mail => {
@@ -16,7 +17,7 @@ scheduleJob('0 0 * * *', async () => {
             })
         }
 
-        mails = await Mail.deleteMany({ deliverDate: today });
+        await Mail.deleteMany({ deliverDate: today });
 
         console.log("today's mail sent and deleted if/any from database successfully");
     } catch (error) {
