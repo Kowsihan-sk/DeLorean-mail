@@ -1,6 +1,6 @@
 import { RecurrenceRule, scheduleJob } from "node-schedule";
 import Mail from "../models/mail.js";
-import { send_mail } from "../nodemailer.js";
+import { send_mail } from "../utils/sendMail.js";
 
 const rule = new RecurrenceRule();
 rule.tz = 'Asia/Kolkata';
@@ -12,6 +12,9 @@ const job = scheduleJob(rule, async () => {
         let offset = today.getTimezoneOffset();
         today = new Date(today.getTime() - offset * 60 * 1000 + 9 * 60 * 60 * 1000 + 30 * 60 * 1000).toISOString().split("T")[0];
         let mails = await Mail.find({ deliverDate: today });
+        // console.log(today);
+
+        const mails = await Mail.find({ deliverDate: today });
 
         if (Array.isArray(mails)) {
             mails.map(mail => {
@@ -19,7 +22,7 @@ const job = scheduleJob(rule, async () => {
             })
         }
 
-        mails = await Mail.deleteMany({ deliverDate: today });
+        await Mail.deleteMany({ deliverDate: today });
 
         console.log("today's mail sent and deleted if/any from database successfully");
     } catch (error) {
