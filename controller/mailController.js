@@ -4,7 +4,7 @@ import { send_mail } from "../nodemailer.js";
 
 const rule = new RecurrenceRule();
 rule.tz = 'Asia/Kolkata';
-rule.minute = 0;
+rule.minute = 35;
 
 const job = scheduleJob(rule, async () => {
     try {
