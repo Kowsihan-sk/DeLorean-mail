@@ -10,7 +10,7 @@ DeLorean-mail is a single page web app which allows you to send mails with the c
 
 ## Tech Used
 
- **MongoDb, Express.js, Node.js, Google API**
+ **MongoDb, Express.js, Node.js, Nodemailer**
 
 ## Live Demo
 

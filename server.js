@@ -4,11 +4,9 @@ import path from "path"
 import express, { json, urlencoded } from "express";
 
 import connectDB from "./config/db.js";
-import connectGmail from "./config/oAuth.js";
 import router from "./routes/route.js";
 
 connectDB();
-connectGmail();
 
 const __dirname = path.resolve();
 const app = express();
