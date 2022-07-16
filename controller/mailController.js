@@ -1,13 +1,16 @@
-import { scheduleJob } from "node-schedule";
+import { RecurrenceRule, scheduleJob } from "node-schedule";
 import Mail from "../models/mail.js";
 import { send_mail } from "../nodemailer.js";
 
-scheduleJob('0 0 * * *', async () => {
+const rule = new RecurrenceRule();
+rule.tz = 'Asia/Kolkata';
+rule.minute = 0;
+
+const job = scheduleJob(rule, async () => {
     try {
         let today = new Date();
         let offset = today.getTimezoneOffset();
         today = new Date(today.getTime() - offset * 60 * 1000 + 9 * 60 * 60 * 1000 + 30 * 60 * 1000).toISOString().split("T")[0];
-        // console.log(today);
         let mails = await Mail.find({ deliverDate: today });
 
         if (Array.isArray(mails)) {
